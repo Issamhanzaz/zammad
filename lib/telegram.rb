@@ -306,19 +306,19 @@ returns
     # find ticket or create one
     state_ids = Ticket::State.where(name: %w[closed merged removed]).pluck(:id)
     ticket = Ticket.where(customer_id: user.id).where.not(state_id: state_ids).order(:updated_at).first
-    if ticket
+    #if ticket
 
       # check if title need to be updated
-      if ticket.title == '-'
-        ticket.title = title
-      end
-      new_state = Ticket::State.find_by(default_create: true)
-      if ticket.state_id != new_state.id
-        ticket.state = Ticket::State.find_by(default_follow_up: true)
-      end
-      ticket.save!
-      return ticket
-    end
+     # if ticket.title == '-'
+      #  ticket.title = title
+      #end
+      #new_state = Ticket::State.find_by(default_create: true)
+      #if ticket.state_id != new_state.id
+      #  ticket.state = Ticket::State.find_by(default_follow_up: true)
+      #end
+      #ticket.save!
+      #return ticket
+    #end
 
     ticket = Ticket.new(
       group_id: group_id,
